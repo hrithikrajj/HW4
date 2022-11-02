@@ -20,6 +20,10 @@ private slots:
 
     void on_pushButton_9_clicked();
 
+    void on_tableView_activated(const QModelIndex &index);
+
+    void on_pushButton_clicked();
+
 private:
     Ui::FacMenu *ui;
 };

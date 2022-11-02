@@ -17,16 +17,16 @@ login::login(QWidget *parent)
     ui->setupUi(this);
     this->setFixedSize(this->geometry().width(),this->geometry().height());
 
-    QPixmap bkgnd("../iitrpr_sms/images/login_bg.jpg");
+    QPixmap bkgnd("../HW4/images/login_bg.jpg");
     bkgnd = bkgnd.scaled(this->size(), Qt::IgnoreAspectRatio);
     QPalette palette;
     palette.setBrush(QPalette::Background, bkgnd);
     this->setPalette(palette);
 
     //ui->comboBox->setIconSize((QSize(40,20)));
-    ui->comboBox->addItem(QIcon("../iitrpr_sms/images/stu.jpg"),"Student");
-    ui->comboBox->addItem(QIcon("../iitrpr_sms/images/fac.jpg"),"Faculty");
-    ui->comboBox->addItem(QIcon("../iitrpr_sms/images/acad.jpg"),"Academics");
+    ui->comboBox->addItem(QIcon("../HW4/images/stu.jpg"),"Student");
+    ui->comboBox->addItem(QIcon("../HW4/images/fac.jpg"),"Faculty");
+    ui->comboBox->addItem(QIcon("../HW4/images/acad.jpg"),"Academics");
    // setIconSize
     if(!conOpen())
         ui->label->setText("Failed to open db!!");

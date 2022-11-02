@@ -59,3 +59,39 @@ void FacMenu::on_pushButton_9_clicked()
     }
     obj_login->conClose();
 }
+
+void FacMenu::on_tableView_activated(const QModelIndex &index)
+{
+    QString val=ui->tableView->model()->data(index).toString();
+    if(CURR_SESSION_ID.isNull())
+        return;
+
+    login *obj_login;
+    obj_login = new login(this);
+    obj_login->conOpen();
+    QSqlQuery query;
+    query.prepare("SELECT * FROM subcatalogue WHERE subid='"+val+"' or title='"+val+"' ");
+
+
+    if(!query.exec())
+    {
+        QMessageBox::critical(this,"Error::",query.lastError().text());
+    }
+    else
+    {
+        int subidCol = query.record().indexOf("subid");
+        int titleCol = query.record().indexOf("title");
+
+        while (query.next())
+        {
+            ui->lineEdit->setText((query.value(subidCol).toString()));
+            ui->textEdit->setText((query.value(titleCol).toString()));
+        }
+    }
+    obj_login->conClose();
+}
+
+void FacMenu::on_pushButton_clicked()
+{
+    //here add
+}
